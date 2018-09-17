@@ -8,7 +8,7 @@ include '../common/utility.php';
 $usertype = isset($_POST['usertype']) ? $_POST['usertype'] : '';
 $usercode = isset($_POST['usercode']) ? $_POST['usercode'] : '';
 $password = isset($_POST['password']) ? $_POST['password'] : '';
-
+echo $usercode;
 
 // $chk_password = md5($password);  // 一方面是轉為md5()，另一方面也要避免和資料表裡的password欄位相衝，故改存到另一變數
 $chk_password = $password;  // 暫時用明碼來檢查
@@ -24,7 +24,7 @@ $pdo = db_open();
 $sqlstr = "SELECT * FROM customer WHERE account=:usercode ";
 
 $sth = $pdo->prepare($sqlstr);
-$sth->bindParam(':usercode', $usercode, PDO::PARAM_INT);
+$sth->bindParam(':usercode', $usercode, PDO::PARAM_STR);
 
 // 執行 SQL
 if($sth->execute())
