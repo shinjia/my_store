@@ -46,7 +46,7 @@ if($sth->execute())
       else
       {
          // 寫出 SQL 語法
-         $sqlstr = "SELECT * FROM customer WHERE account=':ss_usercode ";
+         $sqlstr = "SELECT * FROM customer WHERE account=':ss_usercode' ";
          
          $sth = $pdo->prepare($sqlstr);
          $sth->bindParam(':ss_usercode', $ss_usercode, PDO::PARAM_STR);
